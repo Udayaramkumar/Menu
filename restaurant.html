@@ -1,0 +1,161 @@
+<html>
+<head><center><b>MENU SELECTION</center></head>
+<body>
+<div class=menu align=center>
+	<table>
+	<tr>
+		<th>
+			Item
+		</th>
+		<th>
+			Price
+		</th>
+		<th>
+			Count
+		</th>
+		<th>Quantity</th>
+
+	</tr>
+	<tr>
+	<td>
+		Biriyani
+	</td>
+	<td>
+		&#x20B9 150
+	</td>
+	<td><button class=biriyani onclick="add(this)">+</button>
+	<button class=biriyani onclick="remove(this)">-</button></td>
+	<td id="bircount">0</td>
+	</tr> 
+	<tr>
+		<td>Tandoori</td>
+		<td>&#x20B9 200</td>
+		<td><button class="tandoori" onclick="add(this)">+</button>
+		<button class="tandoori" onclick="remove(this)">-</button></td>
+		<td id=tancount>0</td>
+	</tr>
+	<tr>
+		<td>
+			Barbecue
+		</td>
+		<td>&#x20B9 300</td>
+		<td><button class="barbecue" onclick="add(this)">+</button>
+		<button class="barbecue" onclick="remove(this)">-</button></td>
+		<td id=barcount>0</td>
+	</tr>
+	</table><br>
+	<button class=submit onclick="result()">Receipt</button>
+</div><br>
+<br><br>
+<div align="center" class=bill>
+<table>
+	<tr><td>
+		Total cost of Biriyani
+	</td>
+	<td> <p id=bircost>0</p></td>
+</tr>
+<tr>
+	<td>Total cost of Tandoori </td>
+	<td><p id=tancost>0</p></td>
+</tr>
+<tr>
+	<td>Total cost of Barbecue </td>
+	<td><p id=barcost>0</p></td>
+</tr>
+<tr>
+	<td>Total Cost </td>
+	<td><p id=sum>0</p></td>
+</tr>
+</table>
+
+</div>
+</body>
+</html>
+<style >
+#wrapper {
+  width: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+.container {
+  width: 80%;
+  margin: 0 auto;
+}
+th{
+	background-color: rgb(112, 196, 105);
+}
+	button{
+		 margin: 0 auto;
+  font-size: 1.0rem;
+  padding: 0.25rem 0.5rem;
+  display: block;
+  background-color: #009ac9;
+  border: 1px solid transparent;
+  color: #ffffff;
+  font-weight: 300;
+  -webkit-border-radius: 3px;
+  -webkit-transition: all 0.3s ease-in-out;
+  -moz-transition: all 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out;
+
+border-radius:12px;
+border:none;
+
+	}
+button:hover {
+  background-color: #ffffff;
+  color: #009ac9;
+  border-color: #009ac9;
+</style>
+<script>
+	var biriyani=0;
+	var tandoori=0;
+	var barbecue=0;
+	function add(tag)
+	{
+		if(tag.className=="biriyani")
+		{
+			biriyani++;
+			document.getElementById("bircount").innerText=biriyani;
+
+		}
+		else if(tag.className=="tandoori"){
+			tandoori++;
+			document.getElementById("tancount").innerText=tandoori;
+		}
+	else
+		{
+			barbecue++;
+			document.getElementById("barcount").innerText=barbecue;}
+	}
+
+function remove(tag){
+	if(tag.className =="biriyani" && biriyani > 0)
+	{
+		biriyani--;
+		document.getElementById("bircount").innerText=biriyani;
+	}
+	else if (tag.className =="tandoori" && tandoori > 0)
+	{
+		tandoori--;
+		document.getElementById("tancount").innerText=tandoori;
+	}
+	else if(tag.className =="barbecue" && barbecue > 0)
+	{
+		barbecue--;
+		document.getElementById("barcount").innerText=barbecue;
+	}
+}
+function result(){
+	alert("Sure to generate Receipt");
+	var bircost=document.getElementById("bircost");
+	bircost.innerText= 150 * biriyani;
+	var tancost=document.getElementById("tancost");
+	tancost.innerText=200 * tandoori;
+	var barcost=document.getElementById("barcost");
+	barcost.innerText=300 * barbecue;
+	var sum=document.getElementById("sum");
+	sum.innerText= parseInt(bircost.innerText) + parseInt(tancost.innerText) + parseInt(barcost.innerText);
+}
+</script>
